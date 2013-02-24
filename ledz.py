@@ -135,7 +135,7 @@ play.add_argument('--fps',
 	help='Frames per second.',
 	type=float)
 
-conffile = sys.argv[0] + '.conf'
+conffile = 'ledz.conf'
 # If default config file exists ...
 if os.path.exists(conffile):
 	# load its contents before command line options
