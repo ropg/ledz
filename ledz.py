@@ -1,11 +1,24 @@
 #!/usr/bin/python
 
+'''
+
+ledz.py can scroll text across a display made of a string of LEDs with LPD8806 controller
+chips. Enter ./ledz.py -h for help. More information can be found at 
+
+http://rop.gonggri.jp/
+
+ledz by Rop Gonggrijp is licensed under a 
+Creative Commons Attribution-ShareAlike 3.0 Unported License.
+
+'''
+
+
 from __future__ import division			# So / operator always returns a float
 import argparse, time, signal, sys, os, math, subprocess, re
 import Image, ImageDraw, ImageFont, ImageColor		# Python Image Library
 from imagemaker import imagemaker						# Rop's own script in this directory
 
-global framesize, spidev
+# global framesize, spidev
 
 def CleanExit(signal, frame):
 	print "Ctrl-C pressed, blanking screen"
@@ -18,7 +31,8 @@ def PrintOut(string):
 	sys.stderr.write(string + '\n')
 	sys.stderr.flush()
 
-# http://docs.python.org/2/library/argparse.html#module-argparse
+# The following uses argparse to set args.variables for cli/configfile parameters
+# See http://docs.python.org/2/library/argparse.html#module-argparse
 
 # SpecialParse is an instance of argparse that can process 
 # config files with option name and value on one line
