@@ -24,12 +24,11 @@ def PrintOut(string):
 # config files with option name and value on one line
 class SpecialParse (argparse.ArgumentParser):
 	def convert_arg_line_to_args(self, arg_line):
-		if arg_line[:2] != '--':
-			arg_line = '--' + arg_line
-		for arg in arg_line.split():
-			if not arg.strip():
-				continue
-			yield arg
+		if arg_line.strip() and arg_line[:1] != '#':
+			if arg_line[:2] != '--':
+				arg_line = '--' + arg_line
+			for arg in arg_line.split():
+				yield arg
 			
 parser = SpecialParse(
 	description= 'Scrolling text on LED displays built with LPD8806-based adressable LED strips.', 
